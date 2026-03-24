@@ -13,6 +13,16 @@ gsap.registerPlugin(SplitText, useGSAP);
 export default function Landing() {
     const landingRef = useRef<HTMLDivElement>(null);
 
+    useGSAP(() => {
+        if (!landingRef.current) return;
+
+        const split = new SplitText(".heading", {
+            type: "lines, words",
+            linesClass: styles.splitLine
+        })
+    }, {
+        scope: landingRef
+    })
     return (
         <section className={styles.landing} ref={landingRef}>
             <div className={styles.leftContainer}>
