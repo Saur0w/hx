@@ -38,6 +38,7 @@ export default function Landing() {
                            alt="Raya lounge chair in a darkened interior"
                            fill
                            sizes="52vw"
+                           priority
                     />
                 </div>
             </div>
