@@ -4,83 +4,80 @@ import styles from "./style.module.scss";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { SplitText } from "gsap/SplitText";
-import Image from "next/image";
 
-gsap.registerPlugin(SplitText, useGSAP);
+gsap.registerPlugin(useGSAP);
 
 interface PreloaderProps {
-    onComplete?: () => void; // page.tsx calls this when preloader exits
+    onComplete: () => void;
 }
 
 export default function Preloader({ onComplete }: PreloaderProps) {
-    const rootRef    = useRef<HTMLDivElement>(null);
-    const brandRef   = useRef<HTMLHeadingElement>(null);
-    const cardRef    = useRef<HTMLDivElement>(null);
-    const navRef     = useRef<HTMLElement>(null);
+    const preloaderRef     = useRef<HTMLDivElement>(null);
+    const leftNumRef  = useRef<HTMLSpanElement>(null);
+    const rightNumRef = useRef<HTMLSpanElement>(null);
+    const colLeftRef  = useRef<HTMLDivElement>(null);
+    const colRightRef = useRef<HTMLDivElement>(null);
 
     useGSAP(
         () => {
-            const split = new SplitText(brandRef.current!, { type: "chars" });
+            const fmt = (n: number) => String(Math.floor(n)).padStart(2, "0");
 
-            // ── Initial states ────────────────────────────────────────────
-            gsap.set(split.chars,       { yPercent: 120, opacity: 0 });
-            gsap.set(cardRef.current,   { clipPath: "inset(100% 0% 0% 0%)" });
-            gsap.set(navRef.current,    { opacity: 0 });
+            gsap.set([colLeftRef.current, colRightRef.current], { opacity: 0, y: 12 });
 
-            // ── Timeline ──────────────────────────────────────────────────
-            gsap.timeline({
-                onComplete: () => onComplete?.(),
-            })
-                // Nav fades in
-                .to(navRef.current, {
-                    opacity: 1, duration: 0.5, ease: "power2.out", delay: 0.2,
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    gsap.to(preloaderRef.current, {
+                        clipPath : "inset(0% 0% 100% 0%)",
+                        duration : 1.0,
+                        ease     : "power4.inOut",
+                        onComplete,
+                    });
+                },
+            });
+
+            tl
+                .to([colLeftRef.current, colRightRef.current], {
+                    opacity  : 1,
+                    y        : 0,
+                    duration : 0.55,
+                    stagger  : 0.12,
+                    ease     : "power3.out",
                 })
-                // Brand chars stagger up
-                .to(split.chars, {
-                    yPercent: 0, opacity: 1,
-                    duration: 0.85, stagger: 0.038, ease: "power3.out",
-                }, "-=0.1")
-                // Image card wipes up
-                .to(cardRef.current, {
-                    clipPath: "inset(0% 0% 0% 0%)",
-                    duration: 0.8, ease: "power3.inOut",
-                }, "-=0.3")
-                // Hold
-                .to({}, { duration: 0.9 })
-                // Entire preloader clips upward OUT
-                .to(rootRef.current, {
-                    clipPath: "inset(0% 0% 100% 0%)",
-                    duration: 1.05, ease: "power4.inOut",
-                });
+
+                .to({ val: 0 }, {
+                    val      : 100,
+                    duration : 2.2,
+                    ease     : "power2.inOut",
+                    onUpdate() {
+                        if (leftNumRef.current)
+                            leftNumRef.current.textContent = fmt((this as any).targets()[0].val);
+                    },
+                }, 0.4)
+
+                .to({ val: 0 }, {
+                    val      : 100,
+                    duration : 1.85,
+                    ease     : "power3.inOut",
+                    onUpdate() {
+                        if (rightNumRef.current)
+                            rightNumRef.current.textContent = fmt((this as any).targets()[0].val);
+                    },
+                }, 0.55)
+
+                .to({}, { duration: 0.55 });
         },
-        { scope: rootRef }
+        { scope: preloaderRef }
     );
 
     return (
-        <div className={styles.preloader} ref={rootRef}>
-
-            <nav className={styles.nav} ref={navRef}>
-                <span>ESSESI STUDIO</span>
-                <span>RAYA COLLECTION</span>
-                <span>INFORMATION</span>
-                <span>GALLERY</span>
-            </nav>
-
-            <div className={styles.main}>
-                <h1 className={styles.brand} ref={brandRef}>©SAMEOLD</h1>
-
-                <div className={styles.card} ref={cardRef}>
-                    <Image
-                        src="/images/chair.jpg"
-                        alt=""
-                        fill
-                        style={{ objectFit: "cover", objectPosition: "center 30%" }}
-                        priority
-                    />
-                </div>
+        <div className={styles.preloader} ref={preloaderRef}>
+            <div className={styles.col} ref={colLeftRef}>
+                <span className={styles.num} ref={leftNumRef}>00</span>
             </div>
-
+            <div className={styles.divider} />
+            <div className={styles.col} ref={colRightRef}>
+                <span className={styles.num} ref={rightNumRef}>00</span>
+            </div>
         </div>
     );
 }

@@ -1,7 +1,32 @@
+.splitLine {
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
 .landing  {
   position: relative;
   width: 100vw;
   height: 100dvh;
   overflow: hidden;
   background: #f7f7f7;
+  .left {
+    width: 638px;
+    padding-top: 64px;
+    padding-left: 56px;
+    .heading {
+      font-family: "Suisse Works Trial", sans-serif;
+      font-size: 56px;
+      font-weight: 500;
+      line-height: 1.0;
+      letter-spacing: 0;
+    }
+    .para {
+      font-family: "PP Neue Montreal", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.45;
+      letter-spacing: 0;
+      color: #1e1e1e;
+    }
+  }
 }

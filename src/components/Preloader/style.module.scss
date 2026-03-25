@@ -1,71 +1,40 @@
-$white  : #F0EEE8;
-$ink    : #141410;
-$muted  : #8A8880;
+$bg    : #ECEAE2;
+$ink   : #0D0C0A;
+$line  : #D0CCC3;
 $font-display : var(--font-display, "Impact", sans-serif);
-$font-sans    : var(--font-sans,   "Helvetica Neue", sans-serif);
 
 .preloader {
-  position  : fixed;
-  inset     : 0;
-  z-index   : 100;
-  background: $white;
-  display   : flex;
-  flex-direction: column;
-  clip-path : inset(0% 0% 0% 0%); // GSAP clips this upward on exit
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: $bg;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  clip-path: inset(0% 0% 0% 0%);
+  overflow: hidden;
 }
 
-.nav {
-  display        : flex;
-  align-items    : center;
-  justify-content: space-between;
-  padding        : 0 1.4rem;
-  height         : 52px;
-  border-bottom  : 1px solid darken($white, 12%);
-
-  span {
-    font-family   : $font-sans;
-    font-size     : 0.62rem;
-    font-weight   : 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color         : $muted;
-  }
+.divider {
+  width: 1px;
+  height: 100%;
+  background: $line;
 }
 
-.main {
-  flex           : 1;
-  display        : flex;
-  flex-direction : column;
-  align-items    : center;
-  justify-content: center;
-  gap            : 2.5rem;
-  padding-bottom : 3rem;
+.col {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding: 1.4rem 1.6rem 0;
 }
 
-.brand {
+.num {
   font-family   : $font-display;
-  font-size     : clamp(4.5rem, 10vw, 11rem);
+  font-size     : clamp(8rem, 18vw, 22rem);
   font-weight   : 400;
-  line-height   : 0.9;
-  letter-spacing: -0.01em;
+  line-height   : 0.88;
+  letter-spacing: -0.03em;
   color         : $ink;
-  text-transform: uppercase;
-  margin        : 0;
-  overflow      : hidden;
-}
-
-.card {
-  position    : relative;
-  width       : min(220px, 30vw);
-  aspect-ratio: 3 / 4;
-  overflow    : hidden;
-
-  &::after {
-    content   : "";
-    position  : absolute;
-    inset     : 0;
-    border    : 1px solid rgba(200, 40, 40, 0.5);
-    pointer-events: none;
-    z-index   : 2;
-  }
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  user-select: none;
 }
