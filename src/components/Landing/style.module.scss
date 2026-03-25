@@ -1,3 +1,11 @@
+$bg          : #f7f7f7;
+$ink         : #1E1E1E;
+$muted       : #6B6960;
+$line        : #D0CCC3;
+$header-h    : 52px;
+$footer-h    : 52px;
+$gutter      : 40px;
+
 .splitLine {
   overflow: hidden;
   padding-bottom: 0.06em;
@@ -8,18 +16,92 @@
   width: 100vw;
   height: 100dvh;
   overflow: hidden;
-  background: #f7f7f7;
+  background: $bg;
+  display: flex;
+  justify-content: space-between;
+
+  .gridOverlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+
+    .hLineTop {
+      position: absolute;
+      top: $header-h;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: $line;
+    }
+    .hLineBottom {
+      position: absolute;
+      bottom: $footer-h;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: $line;
+    }
+
+    .vLineLeft {
+      position: absolute; left: 2%; top: 0; bottom: 0; width: 1px; background: $line;
+    }
+    .vLineMidLeft {
+      position: absolute;
+      left: calc(694 / 1440 * 100vw - (#{$gutter} / 2));
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: $line;
+    }
+
+    .vLineMidLeft2 {
+      position: absolute;
+      left: calc(710 / 1440 * 100vw - (#{$gutter} / 2));
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: $line;
+    }
+    .vLineMidRight {
+      position: absolute;
+      left: calc(730 / 1440 * 100vw - (#{$gutter} / 2));
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: $line;
+    }
+
+    .vLineMidRight2 {
+      position: absolute;
+      left: calc(746 / 1440 * 100vw - (#{$gutter} / 2));
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: $line;
+    }
+    .vLineRight {
+      position: absolute; right: 2%; top: 0; bottom: 0; width: 1px; background: $line;
+    }
+  }
+
   .left {
-    width: 638px;
-    padding-top: 64px;
-    padding-left: 56px;
+    width: 50%;
+    padding: ($header-h + 40px) calc(2% + 40px) ($footer-h + 40px) calc(2% + 40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     .heading {
-      font-family: "Suisse Works Trial", sans-serif;
+      font-family: "Suisse Works Trial", serif;
       font-size: 56px;
       font-weight: 500;
-      line-height: 1.0;
-      letter-spacing: 0;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: $ink;
+      margin: 0;
     }
+
     .para {
       font-family: "PP Neue Montreal", sans-serif;
       font-size: 14px;
@@ -27,6 +109,26 @@
       line-height: 1.45;
       letter-spacing: 0;
       color: #1e1e1e;
+      margin: 0;
+      max-width: 400px;
+    }
+  }
+
+  .right {
+    width: 50%;
+    position: relative;
+    padding: ($header-h + 20px) calc(2% + 20px) ($footer-h + 20px) calc($gutter / 2 + 20px);
+
+    .imageWrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+
+      img {
+        object-fit: cover;
+        object-position: center;
+      }
     }
   }
 }
