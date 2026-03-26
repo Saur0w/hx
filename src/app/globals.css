@@ -7,3 +7,7 @@
 body {
   overflow: hidden;
 }
+
+html {
+  scrollbar-gutter: stable;
+}

@@ -26,12 +26,22 @@ export default function Preloader({ onComplete }: PreloaderProps) {
 
             const tl = gsap.timeline({
                 onComplete: () => {
-                    gsap.to(preloaderRef.current, {
-                        clipPath : "inset(0% 0% 100% 0%)",
-                        duration : 1.0,
-                        ease     : "power4.inOut",
-                        onComplete,
-                    });
+                    const tl = gsap.timeline({ onComplete });
+
+                    // 1. numbers vanish first
+                    tl.to([leftNumRef.current, rightNumRef.current], {
+                        yPercent : -18,
+                        opacity  : 0,
+                        duration : 0.45,
+                        stagger  : 0.06,
+                        ease     : "power3.in",
+                    })
+                        // 2. panel wipes up
+                        .to(preloaderRef.current, {
+                            clipPath : "inset(0% 0% 100% 0%)",
+                            duration : 0.9,
+                            ease     : "expo.inOut",
+                        }, "-=0.1");
                 },
             });
 

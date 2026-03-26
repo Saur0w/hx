@@ -15,10 +15,8 @@ export default function Home() {
 
     return (
         <div className={styles.page}>
-            {!ready && (
-                <Preloader onComplete={() => setReady(true)} />
-            )}
-            <Landing ready={ready} />
+            {!ready && <Preloader onComplete={() => setReady(true)} />}
+            {ready  && <Landing ready={ready} />}
         </div>
-  );
+    );
 }

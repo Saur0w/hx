@@ -1,134 +1,129 @@
-$bg          : #f7f7f7;
-$ink         : #1E1E1E;
-$muted       : #6B6960;
-$line        : #D0CCC3;
-$header-h    : 52px;
-$footer-h    : 52px;
-$gutter      : 40px;
+$bg       : #f7f7f7;
+$ink      : #1E1E1E;
+$muted    : #6B6960;
+$line     : #D0CCC3;
+$header-h : 40px;
+$footer-h : 40px;
+$gutter   : 40px;
 
 .splitLine {
-  overflow: hidden;
-  padding-bottom: 0.06em;
+  overflow: hidden !important;
+  display : block;
 }
 
-.landing  {
-  position: relative;
-  width: 100vw;
-  height: 100dvh;
-  overflow: hidden;
+.landing {
+  position  : relative;
+  width     : 100vw;
+  height    : 100dvh;
+  overflow  : hidden;
   background: $bg;
-  display: flex;
+  display   : flex;
   justify-content: space-between;
-  z-index: 1;
+  z-index   : 1;
 
   .gridOverlay {
-    position: absolute;
-    inset: 0;
+    position      : absolute;
+    inset         : 0;
     pointer-events: none;
-    z-index: 10;
+    z-index       : 10;
 
     .hLineTop {
-      position: absolute;
-      top: $header-h;
-      left: 0;
-      right: 0;
-      height: 1px;
+      position  : absolute;
+      top       : $header-h;
+      left      : 40px;
+      right     : 40px;
+      height    : 1px;
       background: $line;
     }
     .hLineBottom {
-      position: absolute;
-      bottom: $footer-h;
-      left: 0;
-      right: 0;
-      height: 1px;
+      position  : absolute;
+      bottom    : $footer-h;
+      left      : 40px;
+      right     : 40px;
+      height    : 1px;
       background: $line;
     }
-
     .vLineLeft {
-      position: absolute; left: 2%; top: 0; bottom: 0; width: 1px; background: $line;
+      position: absolute; left: 40px; top: 0; bottom: 0; width: 1px; background: $line;
     }
     .vLineMidLeft {
-      position: absolute;
-      left: calc(694 / 1440 * 100vw - (#{$gutter} / 2));
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: $line;
+      position  : absolute;
+      left      : calc(694 / 1440 * 100vw - (#{$gutter} / 2));
+      top: 0; bottom: 0; width: 1px; background: $line;
     }
-
     .vLineMidLeft2 {
-      position: absolute;
-      left: calc(710 / 1440 * 100vw - (#{$gutter} / 2));
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: $line;
+      position  : absolute;
+      left      : calc(710 / 1440 * 100vw - (#{$gutter} / 2));
+      top: 0; bottom: 0; width: 1px; background: $line;
     }
     .vLineMidRight {
-      position: absolute;
-      left: calc(730 / 1440 * 100vw - (#{$gutter} / 2));
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: $line;
+      position  : absolute;
+      left      : calc(730 / 1440 * 100vw - (#{$gutter} / 2));
+      top: 0; bottom: 0; width: 1px; background: $line;
     }
-
     .vLineMidRight2 {
-      position: absolute;
-      left: calc(746 / 1440 * 100vw - (#{$gutter} / 2));
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: $line;
+      position  : absolute;
+      left      : calc(746 / 1440 * 100vw - (#{$gutter} / 2));
+      top: 0; bottom: 0; width: 1px; background: $line;
     }
     .vLineRight {
-      position: absolute; right: 2%; top: 0; bottom: 0; width: 1px; background: $line;
+      position: absolute; right: 40px; top: 0; bottom: 0; width: 1px; background: $line;
     }
   }
 
   .left {
-    width: 50%;
-    padding: ($header-h + 40px) calc(2% + 40px) ($footer-h + 40px) calc(2% + 40px);
-    display: flex;
-    flex-direction: column;
+    width          : 50%;
+    padding        : ($header-h + 40px) calc(2% + 40px) ($footer-h + 40px) calc(2% + 40px);
+    display        : flex;
+    flex-direction : column;
     justify-content: space-between;
 
     .heading {
-      font-family: "Suisse Works Trial", serif;
-      font-size: 56px;
-      font-weight: 500;
-      line-height: 1.05;
+      font-family   : "Suisse Works Trial", serif;
+      font-size     : 56px;
+      font-weight   : 500;
+      line-height   : 1.05;
       letter-spacing: -0.02em;
-      color: $ink;
-      margin: 0;
+      color         : $ink;
+      margin        : 0;
+      overflow      : hidden;
     }
 
     .para {
-      font-family: "PP Neue Montreal", sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 1.45;
-      letter-spacing: 0;
-      color: #1e1e1e;
-      margin: 0;
-      max-width: 400px;
+      font-family   : "PP Neue Montreal", sans-serif;
+      font-size     : 14px;
+      font-weight   : 500;
+      line-height   : 1.45;
+      color         : $ink;
+      margin        : 0;
+      max-width     : 400px;
+      overflow      : hidden;
     }
   }
 
   .right {
-    width: 50%;
+    width   : 50%;
     position: relative;
-    padding: ($header-h + 20px) calc(2% + 20px) ($footer-h + 20px) calc($gutter / 2 + 20px);
+    padding : ($header-h + 20px) calc(2% + 20px) ($footer-h + 20px) calc($gutter / 2 + 20px);
 
     .imageWrap {
+      position : relative;
+      width    : 100%;
+      height   : 100%;
+      overflow : hidden;
+      clip-path: inset(0% 0% 100% 0%);
+    }
+
+    .imageInner {
       position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
+      width   : 100%;
+      height  : 100%;
 
       img {
-        object-fit: cover;
+        object-fit     : cover;
         object-position: center;
+        width          : 100%;
+        height         : 100%;
       }
     }
   }
