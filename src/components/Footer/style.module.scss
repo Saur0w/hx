@@ -1,0 +1,41 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height    : 60px;
+  width     : 100vw;
+  display   : grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  background: transparent;
+  z-index   : 10;
+  padding-left : 56px;
+  padding-right: 64px;
+
+  a {
+    text-decoration: none;
+    font-family: "Suisse Int'l Condensed Trial", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #1E1E1E;
+  }
+}
+
+.left {
+  justify-self : start;
+  line-height  : 1;
+  letter-spacing: 0;
+}
+
+.right {
+  justify-self: end;
+
+  a {
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+  }
+}
