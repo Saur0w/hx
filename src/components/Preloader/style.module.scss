@@ -1,40 +1,44 @@
-$bg    : #ECEAE2;
+$bg    : #f7f7f7;
 $ink   : #0D0C0A;
 $line  : #D0CCC3;
-$font-display : var(--font-display, "Impact", sans-serif);
+$font-display : var(--font-display, "Suisse Int'l Condensed Trial", sans-serif);
 
 .preloader {
   position: fixed;
   inset: 0;
-  z-index: 200;
+  z-index: 49;
   background: $bg;
   display: grid;
-  grid-template-columns: 1fr 1px 1fr;
+  grid-template-columns: 1fr 1fr;
   clip-path: inset(0% 0% 0% 0%);
   overflow: hidden;
+  .colLeft {
+    position: relative;
+    top: 80px;
+    left: 80px;
+  }
+
+  .colRight {
+    position: relative;
+    top: 80px;
+    left: 80px;
+  }
+
+  .num {
+    font-family: $font-display;
+    font-size: 80px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: 0;
+    color: $ink;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+    user-select: none;
+    text-transform: uppercase;
+  }
 }
 
-.divider {
-  width: 1px;
-  height: 100%;
-  background: $line;
-}
 
-.col {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  padding: 1.4rem 1.6rem 0;
-}
 
-.num {
-  font-family   : $font-display;
-  font-size     : clamp(8rem, 18vw, 22rem);
-  font-weight   : 400;
-  line-height   : 0.88;
-  letter-spacing: -0.03em;
-  color         : $ink;
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum";
-  user-select: none;
-}
+

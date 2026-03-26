@@ -22,56 +22,6 @@ $gutter   : 40px;
   z-index   : 1;
   border-bottom: 1px solid $line;
 
-  .gridOverlay {
-    position      : absolute;
-    inset         : 0;
-    pointer-events: none;
-    z-index       : 10;
-
-    .hLineTop {
-      position  : absolute;
-      top       : $header-h;
-      left      : 40px;
-      right     : 40px;
-      height    : 1px;
-      background: $line;
-    }
-    .hLineBottom {
-      position  : absolute;
-      bottom    : $footer-h;
-      left      : 40px;
-      right     : 40px;
-      height    : 1px;
-      background: $line;
-    }
-    .vLineLeft {
-      position: absolute; left: 40px; top: 0; bottom: 0; width: 1px; background: $line;
-    }
-    .vLineMidLeft {
-      position  : absolute;
-      left      : calc(694 / 1440 * 100vw - (#{$gutter} / 2));
-      top: 0; bottom: 0; width: 1px; background: $line;
-    }
-    .vLineMidLeft2 {
-      position  : absolute;
-      left      : calc(710 / 1440 * 100vw - (#{$gutter} / 2));
-      top: 0; bottom: 0; width: 1px; background: $line;
-    }
-    .vLineMidRight {
-      position  : absolute;
-      left      : calc(730 / 1440 * 100vw - (#{$gutter} / 2));
-      top: 0; bottom: 0; width: 1px; background: $line;
-    }
-    .vLineMidRight2 {
-      position  : absolute;
-      left      : calc(746 / 1440 * 100vw - (#{$gutter} / 2));
-      top: 0; bottom: 0; width: 1px; background: $line;
-    }
-    .vLineRight {
-      position: absolute; right: 40px; top: 0; bottom: 0; width: 1px; background: $line;
-    }
-  }
-
   .left {
     width          : 50%;
     padding        : ($header-h + 40px) calc(2% + 40px) ($footer-h + 40px) calc(2% + 40px);

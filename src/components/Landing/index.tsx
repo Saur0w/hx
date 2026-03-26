@@ -80,17 +80,6 @@ export default function Landing({ ready = true }: LandingProps) {
 
     return (
         <section className={styles.landing} ref={landingRef}>
-            <div className={styles.gridOverlay}>
-                <div className={styles.hLineTop} />
-                <div className={styles.hLineBottom} />
-                <div className={styles.vLineLeft} />
-                <div className={styles.vLineMidLeft} />
-                <div className={styles.vLineMidLeft2} />
-                <div className={styles.vLineMidRight} />
-                <div className={styles.vLineMidRight2} />
-                <div className={styles.vLineRight} />
-            </div>
-
             <div className={styles.left}>
                 <h1 className={styles.heading} ref={headingRef}>
                     Built for stillness.<br />
