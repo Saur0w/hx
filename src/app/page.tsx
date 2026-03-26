@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Preloader from "@/components/Preloader";
 import Des from "@/components/Des";
 import Lenis from "lenis";
+import Grid from "@/components/Grid";
 
 export default function Home() {
     const [ready, setReady] = useState(false);
@@ -31,14 +32,16 @@ export default function Home() {
     }, []);
 
     return (
-        <div className={styles.page}>
-            {!ready && <Preloader onComplete={() => setReady(true)} />}
-            {ready && (
-                <>
-                    <Landing ready={ready} />
-                    <Des ready={ready} />
-                </>
-            )}
-        </div>
+        <Grid>
+            <div className={styles.page}>
+                {!ready && <Preloader onComplete={() => setReady(true)} />}
+                {ready && (
+                    <>
+                        <Landing ready={ready} />
+                        <Des ready={ready} />
+                    </>
+                )}
+            </div>
+        </Grid>
     );
 }
