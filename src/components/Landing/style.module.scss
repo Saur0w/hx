@@ -5,6 +5,8 @@ $line     : #D0CCC3;
 $header-h : 40px;
 $footer-h : 40px;
 $gutter   : 40px;
+$bp-md    : 1024px;
+$bp-sm    : 768px;
 
 .splitLine {
   overflow: hidden !important;
@@ -12,22 +14,40 @@ $gutter   : 40px;
 }
 
 .landing {
-  position  : relative;
-  width     : 100vw;
-  height    : 100dvh;
-  overflow  : hidden;
-  background: $bg;
-  display   : flex;
+  position       : relative;
+  width          : 100vw;
+  height         : 100dvh;
+  overflow       : hidden;
+  background     : $bg;
+  display        : flex;
   justify-content: space-between;
-  z-index   : 1;
-  border-bottom: 1px solid $line;
+  z-index        : 1;
+  border-bottom  : 1px solid $line;
+
+  @media (max-width: $bp-sm) {
+    flex-direction: column;
+    padding: 0 10px 10px;
+  }
 
   .left {
-    width          : 50%;
-    padding        : ($header-h + 40px) calc(2% + 40px) ($footer-h + 40px) calc(2% + 40px);
-    display        : flex;
-    flex-direction : column;
+    width: 50%;
+    padding: ($header-h + 40px) calc(2% + 40px) ($footer-h + 40px) calc(2% + 40px);
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
+
+    @media (max-width: $bp-md) {
+      width  : 50%;
+      padding: ($header-h + 24px) 24px ($footer-h + 24px) 24px;
+    }
+
+    @media (max-width: $bp-sm) {
+      width: 100%;
+      padding        : ($header-h + 20px) $gutter 20px $gutter;
+      justify-content: flex-start;
+      gap            : 20px;
+      flex-shrink    : 0;
+    }
 
     .heading {
       font-family   : "Suisse Works Trial", serif;
@@ -38,17 +58,22 @@ $gutter   : 40px;
       color         : $ink;
       margin        : 0;
       overflow      : hidden;
+
+      @media (max-width: $bp-md) { font-size: 42px; }
+      @media (max-width: $bp-sm) { font-size: 34px; }
     }
 
     .para {
-      font-family   : "PP Neue Montreal", sans-serif;
-      font-size     : 14px;
-      font-weight   : 500;
-      line-height   : 1.45;
-      color         : $ink;
-      margin        : 0;
-      max-width     : 400px;
-      overflow      : hidden;
+      font-family: "PP Neue Montreal", sans-serif;
+      font-size  : 14px;
+      font-weight: 500;
+      line-height: 1.45;
+      color      : $ink;
+      margin     : 0;
+      max-width  : 400px;
+      overflow   : hidden;
+
+      @media (max-width: $bp-sm) { font-size: 13px; }
     }
   }
 
@@ -56,6 +81,18 @@ $gutter   : 40px;
     width   : 50%;
     position: relative;
     padding : ($header-h + 20px) calc(2% + 20px) ($footer-h + 20px) calc($gutter / 2 + 20px);
+
+    @media (max-width: $bp-md) {
+      width  : 50%;
+      padding: ($header-h + 20px) 16px ($footer-h + 16px) 16px;
+    }
+
+    @media (max-width: $bp-sm) {
+      width  : 100%;
+      padding: 0 $gutter $footer-h $gutter;
+      flex   : 1;
+      min-height: 0;
+    }
 
     .imageWrap {
       position : relative;
