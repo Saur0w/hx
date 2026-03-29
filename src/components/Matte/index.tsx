@@ -30,7 +30,6 @@ export default function Matter({ ready = true }: MatteProps) {
     useGSAP(() => {
         if (!ready || !headingRef.current || !paraRef.current) return;
 
-        // ── Split ──────────────────────────────────────────────────────
         const splitH = new SplitText(headingRef.current, {
             type      : "lines, words",
             linesClass: styles.splitLine,
@@ -40,7 +39,6 @@ export default function Matter({ ready = true }: MatteProps) {
             linesClass: styles.splitLine,
         });
 
-        // ── Hidden states ──────────────────────────────────────────────
         gsap.set(splitH.words,    { yPercent: 110, opacity: 0 });
         gsap.set(splitP.lines,    { yPercent: 100, opacity: 0 });
         gsap.set(img1Wrap.current, { clipPath: "inset(0% 0% 100% 0%)" });
@@ -50,7 +48,6 @@ export default function Matter({ ready = true }: MatteProps) {
         gsap.set(img3Wrap.current, { clipPath: "inset(0% 0% 100% 0%)" });
         gsap.set(img3Inner.current,{ scale: 1.1 });
 
-        // ── Large left image — enters first ───────────────────────────
         gsap.timeline({
             scrollTrigger: {
                 trigger: img1Wrap.current,
@@ -69,7 +66,6 @@ export default function Matter({ ready = true }: MatteProps) {
                 ease     : "power3.out",
             }, 0)
 
-            // small overlapping image staggers in after
             .to(img2Wrap.current, {
                 clipPath : "inset(0% 0% 0% 0%)",
                 opacity  : 1,
@@ -82,7 +78,6 @@ export default function Matter({ ready = true }: MatteProps) {
                 ease     : "power3.out",
             }, 0.45);
 
-        // ── Heading words ──────────────────────────────────────────────
         gsap.timeline({
             scrollTrigger: {
                 trigger: headingRef.current,
@@ -97,7 +92,6 @@ export default function Matter({ ready = true }: MatteProps) {
             ease     : "power4.out",
         });
 
-        // ── Para lines ─────────────────────────────────────────────────
         gsap.timeline({
             scrollTrigger: {
                 trigger: paraRef.current,
@@ -112,7 +106,6 @@ export default function Matter({ ready = true }: MatteProps) {
             ease     : "power3.out",
         });
 
-        // ── Right square image ─────────────────────────────────────────
         gsap.timeline({
             scrollTrigger: {
                 trigger: img3Wrap.current,
@@ -131,7 +124,6 @@ export default function Matter({ ready = true }: MatteProps) {
                 ease     : "power3.out",
             }, 0);
 
-        // ── Subtle scroll parallax on the overlapping small image ──────
         gsap.to(img2Wrap.current, {
             y: -40,
             ease: "none",
@@ -153,7 +145,6 @@ export default function Matter({ ready = true }: MatteProps) {
     return (
         <section className={styles.matte} ref={sectionRef}>
 
-            {/* ── Left — stacked images ────────────────────────── */}
             <div className={styles.left}>
                 <div className={styles.img1Wrap} ref={img1Wrap}>
                     <div className={styles.img1Inner} ref={img1Inner}>
@@ -168,7 +159,6 @@ export default function Matter({ ready = true }: MatteProps) {
                 </div>
             </div>
 
-            {/* ── Right — text + square image ──────────────────── */}
             <div className={styles.right}>
                 <div className={styles.textBlock}>
                     <h2 className={styles.heading} ref={headingRef}>

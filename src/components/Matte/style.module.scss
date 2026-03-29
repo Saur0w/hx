@@ -2,36 +2,62 @@ $bg    : #f7f7f7;
 $ink   : #1E1E1E;
 $muted : #6B6960;
 
+$bp-md : 1024px;
+$bp-sm : 768px;
+
 .splitLine {
   overflow: hidden !important;
   display : block;
 }
 
 .matte {
-  position  : relative;
-  width     : 100vw;
-  min-height: 100dvh;
-  background: $bg;
-  display   : flex;
+  position      : relative;
+  width         : 100vw;
+  min-height    : 100dvh;
+  background    : $bg;
+  display       : flex;
   flex-direction: row;
-  padding   : 56px 40px 72px 56px;
-  gap       : 0;
+  padding       : 56px 40px 72px 56px;
+  gap           : 0;
+
+  @media (max-width: $bp-md) {
+    padding: 48px 24px 56px;
+  }
+
+  @media (max-width: $bp-sm) {
+    flex-direction: column;
+    padding: 50px;
+    gap: 32px;
+  }
 }
 
-// ── Left column ────────────────────────────────────────────────────
 .left {
-  position: relative;
-  width   : 50%;
+  position   : relative;
+  width      : 50%;
   flex-shrink: 0;
+
+  @media (max-width: $bp-sm) {
+    width  : 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap    : 12px;
+  }
 }
 
-// large portrait image
 .img1Wrap {
-  position   : relative;
-  width      : clamp(280px, 30vw, 424px);
-  height     : clamp(360px, 46vh, 534px);
-  overflow   : hidden;
-  clip-path  : inset(0% 0% 100% 0%);
+  position : relative;
+  width    : clamp(280px, 30vw, 424px);
+  height   : clamp(360px, 46vh, 534px);
+  overflow : hidden;
+  clip-path: inset(0% 0% 100% 0%);
+
+  @media (max-width: $bp-sm) {
+    width     : calc(55% - 6px);
+    height    : clamp(220px, 58vw, 320px);
+    margin-top: 0;
+    flex-shrink: 0;
+  }
 }
 
 .img1Inner {
@@ -47,16 +73,26 @@ $muted : #6B6960;
   }
 }
 
-// small overlapping image — absolutely offset over the large one
 .img2Wrap {
-  position   : absolute;
-  bottom     : clamp(20px, 4vh, 60px);
-  right      : clamp(20px, 4vw, 80px);
-  width      : clamp(130px, 15vw, 210px);
-  height     : clamp(158px, 18vh, 256px);
-  overflow   : hidden;
-  clip-path  : inset(0% 0% 100% 0%);
-  z-index    : 2;
+  position : absolute;
+  bottom   : clamp(20px, 4vh, 60px);
+  right    : clamp(20px, 4vw, 80px);
+  width    : clamp(130px, 15vw, 210px);
+  height   : clamp(158px, 18vh, 256px);
+  overflow : hidden;
+  clip-path: inset(0% 0% 100% 0%);
+  z-index  : 2;
+
+  @media (max-width: $bp-sm) {
+    position  : relative;
+    bottom    : unset;
+    right     : unset;
+    width     : calc(45% - 6px);
+    height    : clamp(180px, 46vw, 260px);
+    margin-top: 200px;
+    z-index   : 1;
+    flex-shrink: 0;
+  }
 }
 
 .img2Inner {
@@ -80,12 +116,28 @@ $muted : #6B6960;
   justify-content: space-between;
   padding-left   : clamp(40px, 6vw, 120px);
   padding-top    : 44px;
+
+  @media (max-width: $bp-md) {
+    padding-left: clamp(20px, 3vw, 60px);
+    padding-top : 24px;
+  }
+
+  @media (max-width: $bp-sm) {
+    width       : 100%;
+    padding-left: 0;
+    padding-top : 0;
+    gap         : 28px;
+  }
 }
 
 .textBlock {
   display       : flex;
   flex-direction: column;
   gap           : 36px;
+
+  @media (max-width: $bp-sm) {
+    gap: 20px;
+  }
 }
 
 .heading {
@@ -97,6 +149,11 @@ $muted : #6B6960;
   color         : $ink;
   margin        : 0;
   overflow      : hidden;
+
+  @media (max-width: $bp-sm) {
+    font-size  : clamp(30px, 8.5vw, 44px);
+    line-height: 1.1;
+  }
 }
 
 .para {
@@ -108,9 +165,13 @@ $muted : #6B6960;
   margin     : 0;
   max-width  : 380px;
   overflow   : hidden;
+
+  @media (max-width: $bp-sm) {
+    max-width: 100%;
+    font-size: 13px;
+  }
 }
 
-// square image bottom-right
 .img3Wrap {
   position    : relative;
   width       : clamp(200px, 24vw, 328px);
@@ -118,6 +179,11 @@ $muted : #6B6960;
   overflow    : hidden;
   clip-path   : inset(0% 0% 100% 0%);
   align-self  : flex-start;
+
+  @media (max-width: $bp-sm) {
+    width    : clamp(180px, 62vw, 300px);
+    align-self: flex-start;
+  }
 }
 
 .img3Inner {
