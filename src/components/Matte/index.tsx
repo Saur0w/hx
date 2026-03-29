@@ -148,13 +148,13 @@ export default function Matter({ ready = true }: MatteProps) {
             <div className={styles.left}>
                 <div className={styles.img1Wrap} ref={img1Wrap}>
                     <div className={styles.img1Inner} ref={img1Inner}>
-                        <Image src="/images/silv.jpg" alt="matte finish" fill sizes="28vw" />
+                        <Image src="/images/silv.jpg" alt="matte finish" fill sizes="28vw" unoptimized />
                     </div>
                 </div>
 
                 <div className={styles.img2Wrap} ref={img2Wrap}>
                     <div className={styles.img2Inner} ref={img2Inner}>
-                        <Image src="/images/shadow.jpg" alt="shadow detail" fill sizes="14vw" />
+                        <Image src="/images/shadow.jpg" alt="shadow detail" fill sizes="14vw" unoptimized />
                     </div>
                 </div>
             </div>
@@ -179,7 +179,7 @@ export default function Matter({ ready = true }: MatteProps) {
 
                 <div className={styles.img3Wrap} ref={img3Wrap}>
                     <div className={styles.img3Inner} ref={img3Inner}>
-                        <Image src="/images/dark.jpg" alt="dark detail" fill sizes="22vw" />
+                        <Image src="/images/dark.jpg" alt="dark detail" fill sizes="22vw" unoptimized />
                     </div>
                 </div>
             </div>

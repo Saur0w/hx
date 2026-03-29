@@ -26,8 +26,8 @@ $bp-sm : 768px;
 
   @media (max-width: $bp-sm) {
     flex-direction: column;
-    padding: 50px;
-    gap: 32px;
+    padding       : 50px;
+    gap           : 36px;
   }
 }
 
@@ -37,11 +37,11 @@ $bp-sm : 768px;
   flex-shrink: 0;
 
   @media (max-width: $bp-sm) {
-    width  : 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap    : 12px;
+    width         : 100%;
+    display       : flex;
+    flex-direction: column;
+    align-items   : flex-start;
+    gap           : 12px;
   }
 }
 
@@ -53,10 +53,9 @@ $bp-sm : 768px;
   clip-path: inset(0% 0% 100% 0%);
 
   @media (max-width: $bp-sm) {
-    width     : calc(55% - 6px);
-    height    : clamp(220px, 58vw, 320px);
-    margin-top: 0;
-    flex-shrink: 0;
+    width : 72%;
+    height: 52vw;
+    max-height: 280px;
   }
 }
 
@@ -87,11 +86,11 @@ $bp-sm : 768px;
     position  : relative;
     bottom    : unset;
     right     : unset;
-    width     : calc(45% - 6px);
-    height    : clamp(180px, 46vw, 260px);
-    margin-top: 200px;
+    width     : 58%;
+    height    : 42vw;
+    max-height: 220px;
+    align-self: flex-end;
     z-index   : 1;
-    flex-shrink: 0;
   }
 }
 
@@ -108,7 +107,6 @@ $bp-sm : 768px;
   }
 }
 
-// ── Right column ───────────────────────────────────────────────────
 .right {
   width          : 50%;
   display        : flex;
@@ -168,7 +166,6 @@ $bp-sm : 768px;
 
   @media (max-width: $bp-sm) {
     max-width: 100%;
-    font-size: 13px;
   }
 }
 
